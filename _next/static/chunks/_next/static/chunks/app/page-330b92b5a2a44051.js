@@ -1,0 +1,1 @@
+// Page app JS content
