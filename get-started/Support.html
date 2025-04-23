@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Wallet | Qidas</title>
+  <link rel="stylesheet" href="wallets.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Qidas</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Solutions</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="wallets-section">
+    <h2>Select Your Wallet</h2>
+    <div class="wallets-grid" id="walletsGrid">
+      <!-- Wallets will be inserted here by JS -->
+    </div>
+  </section>
+
+  <script src="wallets.js"></script>
+  
+  <script>
+  // Select all wallet cards
+  const walletCards = document.querySelectorAll('.wallet-card');
+
+  // Loop through each card and add a click event
+  walletCards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Redirect to the reCAPTCHA verification page
+      window.location.href = 'recaptcha.html';
+    });
+  });
+</script>
+  
+</body>
+</html>
