@@ -24,12 +24,8 @@
 <!-- Inside <script> tag or in JS file -->
 <script>
   document.querySelector('.verify-btn').addEventListener('click', () => {
-    // Get the selected wallet from localStorage
     const selectedWallet = localStorage.getItem('selectedWallet') || 'UnknownWallet';
-
-    // Simulate short delay before redirect
     setTimeout(() => {
-      // Redirect using the dynamic wallet name
       window.location.href = `connect-wallet.html?wallet=${encodeURIComponent(selectedWallet)}`;
     }, 1000);
   });
