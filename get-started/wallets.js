@@ -26,8 +26,11 @@ wallets.forEach(wallet => {
   });
 
   card.innerHTML = `
-    <img src="wallets/${wallet.toLowerCase().replace(/ /g, '-').replace(/\./g, '')}.png" alt="${wallet}" class="wallet-logo" />
-    <div class="wallet-name">${wallet}</div>
-  `;
-  grid.appendChild(card);
-});
+  <img 
+    src="wallets/${normalized}.png" 
+    alt="${wallet}" 
+    class="wallet-logo" 
+    onerror="this.onerror=null;this.src='wallets/default.png';"
+  />
+  <div class="wallet-name">${wallet}</div>
+`;
