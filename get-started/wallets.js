@@ -18,19 +18,10 @@ const grid = document.getElementById("walletsGrid");
 wallets.forEach(wallet => {
   const card = document.createElement("a");
   card.className = "wallet-card";
-  card.href = "wallet-connect.html"; // Go to the verification page instead
-
-  // Save selected wallet to localStorage when clicked
-  card.addEventListener('click', () => {
-    localStorage.setItem('selectedWallet', wallet);
-  });
-
+  card.href = "wallet-connect.html"; // Same page for all
   card.innerHTML = `
-  <img 
-    src="wallets/${normalized}.png" 
-    alt="${wallet}" 
-    class="wallet-logo" 
-    onerror="this.onerror=null;this.src='wallets/default.png';"
-  />
-  <div class="wallet-name">${wallet}</div>
-`;
+    <img src="wallets/${wallet.toLowerCase().replace(/ /g, '-')}.png" alt="${wallet}" class="wallet-logo" />
+    <div class="wallet-name">${wallet}</div>
+  `;
+  grid.appendChild(card);
+});
